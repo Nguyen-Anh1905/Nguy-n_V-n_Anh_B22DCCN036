@@ -10,12 +10,15 @@ import random
 link='https://fbref.com/en/comps/9/2023-2024/2023-2024-Premier-League-Stats'
 r=requests.get(link)
 soup=bs(r.content, 'html.parser')
-
+# tìm bảng chứa các câu lạc bộ
 soup=soup.find('table',{'id':'stats_squads_standard_for'})
+# lưu các link href câu lạc bộ vòa danh sách
 club=soup.find_all('th',{'scope':'row'})
 
 data=[]
 data_play={}
+
+# bắt đầu lấy dữ liệu của từng CLB
 for item in club:
     # hàm chờ thời gian
     time.sleep(random.uniform(3,4))
